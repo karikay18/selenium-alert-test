@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Alerts Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .clear-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="button-container">
+    <button onclick="showAlert()">Alert (OK)</button>
+    <button onclick="showConfirm()">Confirm (OK/Cancel)</button>
+    <button onclick="showPrompt()">Prompt (OK/Cancel/Response)</button>
+</div>
+<div id="response-container">
+    <p><strong>Response:</strong> <span id="response"></span></p>
+    <p><strong>Text:</strong> <span id="text"></span></p>
+    <button class="clear-button" onclick="clearResponse()">X</button>
+</div>
+
+<script>
+    function showAlert() {
+        alert("This is an alert with OK option only.");
+        document.getElementById("response").textContent = "OK";
+    }
+
+    function showConfirm() {
+        let result = confirm("Do you want to proceed?");
+        document.getElementById("response").textContent = result ? "OK" : "Cancel";
+    }
+
+    function showPrompt() {
+        let userInput = prompt("Enter some text:", "");
+        if (userInput !== null) {
+            document.getElementById("response").textContent = "OK";
+            document.getElementById("text").textContent = userInput;
+        } else {
+            document.getElementById("response").textContent = "Cancel";
+            document.getElementById("text").textContent = "";
+        }
+    }
+
+    function clearResponse() {
+        document.getElementById("response").textContent = "";
+        document.getElementById("text").textContent = "";
+    }
+</script>
+</body>
+</html>
